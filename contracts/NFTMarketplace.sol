@@ -33,7 +33,7 @@ contract NFTMarketplace is ERC721URIStorage {
       bool sold
     );
 
-    constructor() ERC721("Polyplace Inc.", "PLY") {
+    constructor() ERC721("Polygonfts Inc.", "PLY") {
       owner = payable(msg.sender);
     }
 
@@ -110,8 +110,8 @@ contract NFTMarketplace is ERC721URIStorage {
       idToMarketItem[tokenId].seller = payable(address(0));
       _itemsSold.increment();
       _transfer(address(this), msg.sender, tokenId);
-      payable(owner).transfer(listingPrice);
-      payable(creator).transfer(msg.value);
+      payable(owner).transfer(msg.value);
+      payable(creator).transfer(listingPrice);
     }
 
     /* Returns all unsold market items */

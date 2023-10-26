@@ -211,7 +211,7 @@ const Home = () => {
                     <button
                         type="button"
                         className='fixed bottom-12 right-8 z-50 w-12 h-12 cursor-pointer p-2 nft-gradient shadow-lg
-                                rounded-full focus:ring-purple-500 ring-opacity-0 inline-flex items-center hover:shadow-2xl
+                                rounded-full focus:ring-blue-500 ring-opacity-0 inline-flex items-center hover:shadow-2xl
                                 focus:outline-none focus:ring-2 focus:ring-offset-2 transform transition duration-500'
                         onClick={handleScrollToTop}>
                         <Image

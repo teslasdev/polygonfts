@@ -6,7 +6,7 @@ import { create as ipfsHttpClient } from 'ipfs-http-client';
 
 import { MarketAddress, MarketAddressABI } from './constants';
 
-const subdomainName = 'polyplace';
+const subdomainName = 'polygonft';
 
 const projectId = process.env.NEXT_PUBLIC_IPFS_PROJECT_ID;
 const projectSecret = process.env.NEXT_PUBLIC_API_KEY_SECRET;
@@ -64,7 +64,7 @@ export const NFTProvider = ({ children }) => {
         try {
             const added = await client.add({ content: file });
 
-            const url = `${endpointBasePath}/${added.path}`;
+            const url = `${endpointBasePath}${added.path}`;
 
             console.log(`Upload to IPFS url: ${url}`);
 
@@ -102,10 +102,9 @@ export const NFTProvider = ({ children }) => {
         if (!name || !description || !price || !fileUrl) return;
 
         const data = JSON.stringify({ name, description, image: fileUrl });
-
         try {
             const added = await client.add(data);
-            const url = endpointBasePath + added.path;
+            const url = `${endpointBasePath}${added.path}`;
 
             console.log(`Created NFT url: ${url}`);
 
@@ -120,7 +119,7 @@ export const NFTProvider = ({ children }) => {
     const fetchNFTs = async () => {
         setIsLoadingNFT(false);
         const provider = new ethers.providers.AlchemyProvider(
-            'maticmum',
+            'matic',
             process.env.NEXT_PUBLIC_API_KEY,
         );
         const contract = fetchContract(provider);
