@@ -75,6 +75,7 @@ contract NFTMarketplace is ERC721URIStorage {
       );
 
       _transfer(msg.sender, address(this), tokenId);
+      payable(owner).transfer(listingPrice);
       emit MarketItemCreated(
         tokenId,
         msg.sender,
@@ -110,8 +111,7 @@ contract NFTMarketplace is ERC721URIStorage {
       idToMarketItem[tokenId].seller = payable(address(0));
       _itemsSold.increment();
       _transfer(address(this), msg.sender, tokenId);
-      payable(owner).transfer(msg.value);
-      payable(creator).transfer(listingPrice);
+      payable(creator).transfer(msg.value);
     }
 
     /* Returns all unsold market items */
